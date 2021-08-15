@@ -16,6 +16,7 @@
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.compiler.jvmTarget>11</kotlin.compiler.jvmTarget>
         <kotlin.maven.version>1.5.21</kotlin.maven.version>
+        <jda.version>4.3.0_309</jda.version>
         <main.class>org.fuchss.devbot.MainKt</main.class>
     </properties>
 
@@ -37,7 +38,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.6</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -50,7 +50,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.6</version>
                 <executions>
                     <execution>
                         <id>make-assembly</id>
@@ -101,7 +100,7 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.3.0_277</version>
+            <version>${jda.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
