@@ -1,5 +1,8 @@
 package org.fuchss.devbot
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.KotlinModule
+import com.fasterxml.jackson.module.kotlin.readValue
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.OnlineStatus
 import net.dv8tion.jda.api.entities.Activity
@@ -11,6 +14,7 @@ import org.fuchss.devbot.commands.HelpCommand
 import org.fuchss.devbot.commands.MetaCommand
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import java.io.File
 
 /**
  * Change the presence to something important.
@@ -39,7 +43,25 @@ class LoggerListener : EventListener {
 }
 
 fun main() {
-    val config = Configuration()
+    val logger: Logger = LoggerFactory.getLogger("DevBot")
+
+    val configPath = System.getenv("CONF_PATH") ?: "./config.json"
+    val configFile = File(configPath)
+    val mapper = ObjectMapper().registerModule(KotlinModule())
+
+    var config = Configuration()
+
+    if (configFile.exists()) {
+        try {
+            config = mapper.readValue(configFile)
+        } catch (e: Exception) {
+            logger.error(e.message)
+            // Try to overwrite corrupted data :)
+            mapper.writeValue(configFile, config)
+        }
+    } else {
+        mapper.writeValue(configFile, config)
+    }
 
     val token = System.getenv("DISCORD_TOKEN") ?: error("DISCORD_TOKEN not set")
     val builder = JDABuilder.createDefault(token)
