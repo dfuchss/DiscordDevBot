@@ -23,7 +23,7 @@ class MetaCommand(configuration: Configuration) : Command(configuration, "meta")
 
         if (!anyMention) {
             val msg = event.message.channel.sendMessage("I need a mention to get meta information").complete()
-            msg.delete().completeAfter(10, TimeUnit.SECONDS)
+            msg.delete().queueAfter(10, TimeUnit.SECONDS)
         }
     }
 
@@ -76,8 +76,8 @@ class MetaCommand(configuration: Configuration) : Command(configuration, "meta")
 
         val embed =
             EmbedBuilder().setTitle(title).setDescription(text.trim()).setColor(Color.BLUE.darker()).build()
-        val msg = channel.sendMessage(embed).complete()
-        msg.delete().queueAfter(10, TimeUnit.SECONDS)
+        val msg = channel.sendMessageEmbeds(embed).complete()
+        msg.delete().queueAfter(30, TimeUnit.SECONDS)
     }
 
 }
