@@ -16,4 +16,4 @@ You'll need the following two things:
 To start the bot simply run:
 
 * Store token to environment: `echo "DISCORD_TOKEN=YOUR-Discord-TOKEN" > .env`
-* Start the Bot: `docker run -itd --name "DevBot" --env-file .env ghcr.io/dfuchss/discord-devbot`
+* Start the Bot: `docker run -itd --name "DevBot" --env-file .env -v YOUR_MACHINE_PATH:/usr/src/bot/config ghcr.io/dfuchss/discord-devbot`
