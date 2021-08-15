@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.entities.Role
 import net.dv8tion.jda.api.entities.TextChannel
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import org.fuchss.devbot.Configuration
+import org.fuchss.devbot.Constants
 import java.awt.Color
 import java.util.concurrent.TimeUnit
 
@@ -73,11 +74,9 @@ class MetaCommand(configuration: Configuration) : Command(configuration, "meta")
     }
 
     private fun sendAndDelete(channel: MessageChannel, title: String, text: String) {
-
         val embed =
-            EmbedBuilder().setTitle(title).setDescription(text.trim()).setColor(Color.BLUE.darker()).build()
+            EmbedBuilder().setTitle(title).setDescription(text.trim()).setColor(Constants.BLUE).build()
         val msg = channel.sendMessageEmbeds(embed).complete()
         msg.delete().queueAfter(30, TimeUnit.SECONDS)
     }
-
 }
