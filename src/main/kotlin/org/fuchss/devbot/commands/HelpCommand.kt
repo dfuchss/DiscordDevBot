@@ -16,7 +16,7 @@ class HelpCommand(configuration: Configuration) : Command(configuration, "help")
         """.trimMargin()
 
         val embed = EmbedBuilder().setTitle("${event.jda.selfUser.name} Help").setDescription(helpMessage).build()
-        val msg = event.message.channel.sendMessage(embed).complete()
+        val msg = event.message.channel.sendMessageEmbeds(embed).complete()
         msg.delete().queueAfter(20, TimeUnit.SECONDS)
     }
 }
