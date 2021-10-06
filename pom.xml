@@ -16,7 +16,7 @@
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.compiler.jvmTarget>11</kotlin.compiler.jvmTarget>
         <kotlin.maven.version>1.5.31</kotlin.maven.version>
-        <jda.version>4.3.0_331</jda.version>
+        <jda.version>4.3.0_333</jda.version>
         <main.class>org.fuchss.devbot.MainKt</main.class>
     </properties>
 
