@@ -17,6 +17,7 @@
         <kotlin.compiler.jvmTarget>11</kotlin.compiler.jvmTarget>
         <kotlin.maven.version>1.6.10</kotlin.maven.version>
         <jda.version>4.4.0_352</jda.version>
+        <logger.version>1.7.33</logger.version>
         <main.class>org.fuchss.devbot.MainKt</main.class>
     </properties>
 
@@ -104,12 +105,12 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.32</version>
+            <version>${logger.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.32</version>
+            <version>${logger.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
